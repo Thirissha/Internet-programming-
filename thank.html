@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Event Zest</title>
+    <style>
+        body {
+            font-family: 'forte', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('e.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .thank-you-container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            color: purple;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        p {
+            color: black;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: purple;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkorchid;
+        }
+    </style>
+</head>
+<body>
+
+<div class="thank-you-container">
+    <h1>Thank You for Visiting Event Zest!</h1>
+    <p>We appreciate your trust. We will reach out to you as soon as possible. Have a great day!</p>
+    <button onclick="goToHomePage()">Exit</button>
+</div>
+
+<script>
+    function goToHomePage() {
+        // Redirect to home page
+        window.location.href = 'project.html'; // Ensure 'project.html' is the correct filename
+    }
+</script>
+
+</body>
+</html>

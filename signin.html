@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Event Zest</title>
+    <style>
+        body {
+            font-family: 'forte', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('signin.jpg'); 
+            background-size: cover;
+            background-position: center;
+        }
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 300px;
+            text-align: center;
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+        }
+        .form-container input {
+            display: block;
+            margin: 0 auto 20px auto;
+            padding: 12px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .form-container button {
+            padding: 12px;
+            background-color: purple;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 50%;
+            margin: 10px auto;
+            border-radius: 10px;
+            display: block;
+        }
+        .form-container button:hover {
+            background-color: darkviolet;
+        }
+        .back-button {
+            background-color: lightgray;
+            color: black;
+        }
+        .back-button:hover {
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Sign In</h2>
+    <input type="text" id="signin-username" placeholder="Enter your username" required>
+    <input type="password" id="signin-password" placeholder="Enter your password" required>
+    <button class="back-button" onclick="goBack()">Back</button>
+    <button onclick="submitSignIn()">Sign In</button>
+</div>
+
+<script>
+    function submitSignIn() {
+        let username = document.getElementById('signin-username').value;
+        let password = document.getElementById('signin-password').value;
+        if (username && password) {
+            alert(`Hello ${username}, Welcome to Event Zest! Have a happy day!`);
+            window.location.href = 'project.html';
+        } else {
+            alert("Please enter username and password.");
+        }
+    }
+
+    function goBack() {
+        window.history.back(); // Go to the previous page
+    }
+</script>
+
+</body>
+</html>

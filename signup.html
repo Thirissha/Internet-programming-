@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Event Zest</title>
+    <style>
+        body {
+            font-family: 'forte', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('signup.jpg'); /* Add your background image here */
+            background-size: cover;
+            background-position: center;
+        }
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px; /* Increased padding for more space */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 400px; /* Set a fixed width */
+            height: 70%; /* Allow height to adjust based on content */
+            text-align: center; /* Center align form content */
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+        }
+        .form-container input {
+            display: block;
+            margin: 0 auto 15px auto; /* Center input fields */
+            padding: 15px; /* Increased padding for input fields */
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px; /* Rounded borders for input fields */
+        }
+        .form-container button {
+            padding: 10px; /* Adjusted padding */
+            background-color: purple;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 40%;
+            margin: 10px auto; /* Center buttons */
+            border-radius: 10px; /* Rounded borders for the button */
+        }
+        .form-container button:hover {
+            background-color: darkviolet;
+        }
+        .back-button {
+            padding: 10px;
+            background-color: lightgray;
+            color: black;
+            border: none;
+            cursor: pointer;
+            width: 90%;
+            border-radius: 10px; /* Rounded borders for the button */
+            margin: 0 auto; /* Center the back button */
+        }
+        .back-button:hover {
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Sign Up</h2>
+    <input type="text" id="signup-name" placeholder="Enter your name" required>
+    <input type="text" id="signup-phone" placeholder="Enter your phone number" required>
+    <input type="text" id="signup-address" placeholder="Enter your address" required>
+    <input type="email" id="signup-email" placeholder="Enter your email" required>
+    <input type="password" id="signup-password" placeholder="Enter your password" required>
+    <button class="back-button" onclick="goBack()">Back</button> <!-- Back button -->
+    <button onclick="submitSignUp()">Submit</button>
+</div>
+
+<script>
+    function submitSignUp() {
+        let name = document.getElementById('signup-name').value;
+        let phone = document.getElementById('signup-phone').value;
+        let address = document.getElementById('signup-address').value;
+        let email = document.getElementById('signup-email').value;
+        let password = document.getElementById('signup-password').value;
+
+        if (name && phone && address && email && password) {
+            alert("Sign Up Successful!");
+            window.location.href = 'signin.html'; // Redirect to events.html after sign-up
+        } else {
+            alert("Please fill all the fields.");
+        }
+    }
+
+    function goBack() {
+        history.back(); // Go to the previous page
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event List - Event Zest</title>
+    <style>
+        body {
+            font-family: 'forte', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            background: url('e.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .event-list-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 50%;
+        }
+        .event-list-container h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: purple;
+        }
+        .event {
+            background-color: #ececec;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .event-title {
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .event-details {
+            margin-top: 5px;
+        }
+        .form-container {
+            margin: 20px 0;
+            text-align: left;
+        }
+        .event-box {
+            background-color: skyblue;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .event-box:hover {
+            background-color: deepskyblue;
+        }
+        input[type="text"], input[type="number"], input[type="date"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: purple;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkorchid;
+        }
+        .radio-group {
+            margin: 10px 0;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+<div class="event-list-container">
+    <h1>Event Zest - Event List</h1>
+
+    <!-- Existing Events -->
+    <div id="eventList"></div>
+
+    <!-- Event boxes -->
+    <div class="event-box" onclick="addEvent('Wedding Party', this)">Wedding Party</div>
+    <div class="event-box" onclick="addEvent('Concert', this)">Concert</div>
+    <div class="event-box" onclick="addEvent('Festival', this)">Festival</div>
+    <div class="event-box" onclick="addEvent('Birthday Party', this)">Birthday Party</div>
+    <div class="event-box" onclick="addEvent('Corporate Event', this)">Corporate Event</div>
+    <div class="event-box" onclick="addEvent('Graduation Party', this)">Graduation Party</div>
+    <div class="event-box" onclick="addEvent('Anniversary Celebration', this)">Anniversary Celebration</div>
+    <div class="event-box" onclick="addEvent('Product Launch', this)">Product Launch</div>
+    <div class="event-box" onclick="addEvent('Charity Event', this)">Charity Event</div>
+    <div class="event-box" onclick="addEvent('Sports Event', this)">Sports Event</div>
+    <div class="event-box" onclick="addEvent('Art Exhibition', this)">Art Exhibition</div>
+    <div class="event-box" onclick="addEvent('Theater Performance', this)">Theater Performance</div>
+</div>
+
+<script>
+    let currentForm = null;
+
+    function addEvent(eventType, eventBox) {
+        if (currentForm) {
+            currentForm.remove();
+        }
+
+        const formContainer = document.createElement('div');
+        formContainer.classList.add('form-container');
+        formContainer.innerHTML = `
+            <h3>Event Details</h3>
+            <form id="eventForm">
+                <input type="text" id="eventTitle" placeholder="Event Title" value="${eventType}" required readonly>
+                <input type="text" id="eventVenue" placeholder="Event Venue" required>
+                <input type="number" id="numPeople" placeholder="Number of People" min="1" required>
+                <input type="text" id="budgetRange" placeholder="Budget Range" required>
+                <input type="number" id="numDays" placeholder="Number of Days" min="1" required>
+                <input type="date" id="startDate" required>
+                <input type="date" id="endDate" required>
+
+                <div class="radio-group">
+                    <label>Transportation Required?</label><br>
+                    <label><input type="radio" name="transport" value="Yes" required> Yes</label>
+                    <label><input type="radio" name="transport" value="No"> No</label>
+                </div>
+
+                <div class="radio-group">
+                    <label>Shelter Required?</label><br>
+                    <label><input type="radio" name="shelter" value="Yes" required> Yes</label>
+                    <label><input type="radio" name="shelter" value="No"> No</label>
+                </div>
+
+                <div class="radio-group">
+                    <label>Photo Required?</label><br>
+                    <label><input type="radio" name="photo" value="Yes" required> Yes</label>
+                    <label><input type="radio" name="photo" value="No"> No</label>
+                </div>
+
+                <div class="radio-group">
+                    <label>Food Required?</label><br>
+                    <label><input type="radio" name="food" value="Yes" required> Yes</label>
+                    <label><input type="radio" name="food" value="No"> No</label>
+                </div>
+
+                <div class="action-buttons">
+                    <button type="button" onclick="confirmSubmission()">OK</button>
+                    <button type="button" onclick="closeForm()">Back</button>
+                </div>
+            </form>
+        `;
+
+        eventBox.insertAdjacentElement('afterend', formContainer);
+        currentForm = formContainer;
+    }
+
+    function closeForm() {
+        if (currentForm) {
+            currentForm.remove();
+            currentForm = null;
+        }
+    }
+
+    function confirmSubmission() {
+        const confirmation = confirm("Are you sure you want to submit the event details?");
+        if (confirmation) {
+            submitForm();
+        }
+    }
+
+    function submitForm() {
+        const form = currentForm.querySelector('#eventForm');
+
+        const title = document.getElementById('eventTitle').value;
+        const venue = document.getElementById('eventVenue').value;
+        const numPeople = document.getElementById('numPeople').value;
+        const budgetRange = document.getElementById('budgetRange').value;
+        const numDays = document.getElementById('numDays').value;
+        const startDate = document.getElementById('startDate').value;
+        const endDate = document.getElementById('endDate').value;
+
+        const transport = document.querySelector('input[name="transport"]:checked').value;
+        const shelter = document.querySelector('input[name="shelter"]:checked').value;
+        const photo = document.querySelector('input[name="photo"]:checked').value;
+        const food = document.querySelector('input[name="food"]:checked').value;
+
+        const eventDiv = document.createElement('div');
+        eventDiv.classList.add('event');
+
+        const eventTitleDiv = document.createElement('div');
+        eventTitleDiv.classList.add('event-title');
+        eventTitleDiv.textContent = title;
+
+        const eventDetailsDiv = document.createElement('div');
+        eventDetailsDiv.classList.add('event-details');
+        eventDetailsDiv.textContent = `Venue: ${venue}, People: ${numPeople}, Budget: ${budgetRange}, Days: ${numDays}, Start Date: ${startDate}, End Date: ${endDate}, Transport: ${transport}, Shelter: ${shelter}, Photo: ${photo}, Food: ${food}`;
+
+        eventDiv.appendChild(eventTitleDiv);
+        eventDiv.appendChild(eventDetailsDiv);
+
+        document.getElementById('eventList').appendChild(eventDiv);
+        closeForm();
+
+        // Redirect to thank you page
+        window.location.href = 'thank.html';
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Zest</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'forte', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        header {
+            background-color: purple;
+            padding: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+        .header-left img {
+            width: 80px;
+            height: 90px;
+            margin-right: 10px;
+        }
+        header h1 {
+            font-family: 'Viner Hand ITC', sans-serif;
+            font-size: 48px;
+            margin: 0;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        header h2 {
+            font-family: 'centaur', sans-serif;
+            font-size: 30px;
+            margin: 0;
+            color: lightbrown;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            padding: 6px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .navbar .search-bar {
+            display: flex;
+            align-items: center;
+            margin-right: 30px;
+        }
+        .navbar .search-bar input[type="text"] {
+            padding: 8px;
+            width: 250px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+        .navbar a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .content {
+            text-align: center;
+            margin: 50px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .content h2 {
+            color: #000;
+            font-family: 'Britannic Bold', sans-serif;
+            font-size: 36px;
+        }
+        .content h3 {
+            font-family: 'Times New Roman', serif;
+            font-size: 24px;
+            color: #333;
+        }
+        .cloud {
+            font-size: 20px;
+            margin: 10px;
+            display: inline-block;
+            padding: 20px;
+            border-radius: 50% / 60% 60% 40% 40%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 140px;
+            text-align: center;
+        }
+        .cloud:nth-child(odd) {
+            background-color: lightpink;
+        }
+        .cloud:nth-child(even) {
+            background-color: lightgreen;
+        }
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 300px; /* Set a fixed height for the slider */
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        .slides {
+            display: flex;
+            width: calc(100% * 6); /* Set width based on number of slides */
+            height: 100%; /* Make slides occupy full height */
+            transition: transform 0.5s ease-in-out; /* Transition speed for slide change */
+        }
+        .slides img {
+            width: 100%; /* Make images fill the width of the slider */
+            height: 100%; /* Make images fill the height of the slider */
+            object-fit: cover; /* Cover the area while maintaining aspect ratio */
+        }
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            padding: 20px;
+            background-color: grey;
+            color: white;
+        }
+        .about-section {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            max-width: 900px;
+            font-family: 'times roman', serif;
+            font-size: 20px;
+            line-height: 1.5;
+            text-align: left;
+        }
+        .about-section b {
+            font-weight: bold;
+        }
+        .cloud-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .cloud-container .cloud {
+            flex-basis: 30%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+        .disclaimer {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            text-align: center;
+            font-family: 'Times roman', sans-serif;
+        }
+        .welcome-message {
+            display: none;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-left">
+        <img src="your-new-logo.png" alt="Event Zest Logo">
+        <h1>Event Zest- </h1>
+        <h2>"Your vision, our expertise!"</h2>
+    </div>
+    <div class="navbar">
+        <div class="search-bar">
+            <i class="fas fa-search" style="margin-right: 10px; color: white;"></i>
+            <input type="text" placeholder="Search events...">
+        </div>
+        <div class="profile">
+            <a href="signup.html">Sign Up</a>
+            <a href="signin.html">Sign In</a>
+        </div>
+    </div>
+</header>
+
+<!-- Slider Section -->
+<div class="slider">
+    <div class="slides">
+        <img src="event1.jpg" alt="Event 1">
+        <img src="event2.jpg" alt="Event 2">
+        <img src="event3.jpg" alt="Event 3">
+        <img src="event4.jpg" alt="Event 4">
+        <img src="event5.jpg" alt="Event 5">
+        <img src="event6.jpg" alt="Event 6">
+        <!-- Repeat images for continuous loop effect -->
+        <img src="event1.jpg" alt="Event 1">
+        <img src="event2.jpg" alt="Event 2">
+        <img src="event3.jpg" alt="Event 3">
+        <img src="event4.jpg" alt="Event 4">
+        <img src="event5.jpg" alt="Event 5">
+        <img src="event6.jpg" alt="Event 6">
+    </div>
+</div>
+
+<div class="content">
+    <h2>Your One-Stop Solution for All Event Planning Needs!!!</h2>
+    <h3>"Your Perfect Event Awaits: Pick Your Style and Let Us Handle the Rest!"</h3>
+    <div class="cloud-container">
+        <div class="cloud">Wedding Planning</div>
+        <div class="cloud">Corporate Events</div>
+        <div class="cloud">Birthday Parties</div>
+        <div class="cloud">Concerts</div>
+        <div class="cloud">Festivals</div>
+        <div class="cloud">Baby Shower</div>
+        <div class="cloud">Sporting Events</div>
+        <div class="cloud">Graduation Parties</div>
+        <div class="cloud">Family Reunions</div>
+        <div class="cloud">Art Exhibitions</div>
+        <div class="cloud">Seasonal Celebrations</div>
+        <div class="cloud">Housewarming Parties</div>
+        <div class="cloud">Workshops and Classes</div>
+        <div class="cloud">Charity Events</div>
+        <div class="cloud">Proms and School Events</div>
+    </div>
+</div>
+
+<div class="about-section">
+    <h2>About Us</h2>
+    <p>Welcome to <b>Event Zest</b>, your ultimate destination for seamless event planning. At Event Zest, we believe that every occasion is unique and deserves a personal touch. Founded with a passion for crafting unforgettable experiences, our team is dedicated to transforming your visions into reality.</p><br>
+    
+    <p><b>Our Mission</b><br>
+    Our mission is to provide exceptional event planning services tailored to your specific needs. Whether it’s a wedding, corporate event, or a birthday party, we aim to exceed your expectations and deliver an event that you and your guests will cherish forever.</p><br>
+    
+    <p><b>Why Choose Us?</b><br>
+   <b>Personalized Service:</b> We understand that every event is unique. Our team works closely with you to customize every detail, ensuring your vision is brought to life.<br>
+
+<b>Experienced Professionals:</b> With years of experience in event planning, our dedicated team has the expertise to handle events of any scale and complexity.<br>
+
+<b>Comprehensive Planning:</b> From venue selection to decor and logistics, we offer end-to-end planning services so you can focus on enjoying your event.<br>
+
+<b>Vast Network of Vendors:</b> Our established relationships with top vendors guarantee access to quality services, from catering to entertainment.<br>
+
+<b>Attention to Detail:</b> We pride ourselves on our meticulous attention to detail, ensuring nothing is overlooked in the planning process.<br>
+
+<b>Budget-Friendly Solutions:</b> We work within your budget to deliver a memorable event without compromising on quality.<br>
+
+<b>Timely Execution:</b> Our team is committed to meeting deadlines and ensuring everything is set up perfectly on the day of your event.<br>
+
+<b>Stress-Free Experience:</b> Let us handle the logistics so you can enjoy your special occasion worry-free. With a keen eye for detail and a commitment to excellence, we bring creativity, organization, and professionalism to every project. Our extensive network of vendors and venues ensures that you have access to the best resources available.<br></p>
+    
+    <div class="disclaimer">
+        <p><b>Disclaimer:</b> All events listed are subject to availability and confirmation.<br> Please contact us for more details.<br>Event Zest makes no claim of ownership for third-party images and credits the respective owners.</p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Event Zest. All rights reserved.</p>
+</footer>
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelector('.slides');
+    const totalSlides = slides.children.length;
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % (totalSlides / 2); // Adjust for repeated images
+        updateSlidePosition();
+    }
+
+    function updateSlidePosition() {
+        slides.style.transform = `translateX(-${currentSlide * (100 / (totalSlides / 2))}%)`;
+    }
+
+    // Automatic Slide Change every 4 seconds
+    setInterval(() => {
+        nextSlide();
+    }, 4000); // 4000ms = 4 seconds
+
+    // Show the welcome message for 3 seconds
+    const welcomeMessage = document.getElementById('welcomeMessage');
+    welcomeMessage.style.display = 'block';
+    setTimeout(() => {
+        welcomeMessage.style.display = 'none';
+    }, 3000);
+</script>
+</body>
+</html>
